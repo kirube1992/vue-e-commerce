@@ -1,4 +1,4 @@
-import { defineStore } from 'pinea'
+import { defineStoer } from 'pinea'
 
 import { ref, computed } from 'vue'
 
@@ -17,8 +17,8 @@ export const useCartStore = defineStoer('cart', () => {
       .toFixed(2)
   })
 
-  function addToCart(Product) {
-    const existingItem = item.value.find(item.product.id === product.id)
+  function addToCart(product) {
+    const existingItem = items.value.find((item) => item.product.id === product.id)
   }
 
   if (existingItem) {
@@ -33,6 +33,6 @@ export const useCartStore = defineStoer('cart', () => {
     items,
     addToCart,
     cartItemCount,
-    cartTotalprie,
+    CartTotalPrice,
   }
 })

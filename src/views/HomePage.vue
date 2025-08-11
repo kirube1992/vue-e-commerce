@@ -1,5 +1,6 @@
 <script setup>
-import { ref, onMounted, resolveComponent } from 'vue'
+import { ref, onMounted } from 'vue'
+import ProductCard from '@/components/ProductCard.vue'
 
 const product = ref([])
 const isLoading = ref(true)

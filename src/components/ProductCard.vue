@@ -7,17 +7,23 @@ defineProps({
 })
 </script>
 <template>
-  <div class="card">
-    <div class="card-image-container">
-      <img :src="product.image" :alt="product.title" class="card-image" />
+  <router-link :to="`/product/${product.id}`" class="card-link">
+    <div class="card">
+      <div class="card-image-container">
+        <img :src="product.image" :alt="product.title" class="card-image" />
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">{{ product.title }}</h3>
+        <p class="card-price">${{ product.price }}</p>
+      </div>
     </div>
-    <div class="card-content">
-      <h3 class="card-title">{{ product.title }}</h3>
-      <p class="card-price">${{ product.price }}</p>
-    </div>
-  </div>
+  </router-link>
 </template>
 <style scoped>
+.card-link {
+  text-decoration: none;
+  color: inherit; /* Makes the link inherit the color of its parent */
+}
 .card {
   width: 250px;
   background-color: #fff;

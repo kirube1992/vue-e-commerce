@@ -3,13 +3,24 @@ import { ref, onMounted } from 'vue'
 
 import { useRoute } from 'vue-router'
 
+import { useCartStore } from '../stores/cart.js'
+
 const route = useRoute()
+
+const cartstore = useCartStore()
 
 const productId = route.params.id
 
 const product = ref(null)
 const isLoading = ref(true)
 const error = ref(null)
+
+function handleAddtoCart() {
+  if (product.value) {
+    cartstore.addToCart(product.value)
+    alert(`${product.value.title}  has been added to your cart!`)
+  }
+}
 
 async function fecthProduct() {
   try {
@@ -44,7 +55,7 @@ onMounted(() => {
         <p class="category">{{ product.category }}</p>
         <p class="description">{{ product.description }}</p>
         <p class="price">${{ product.price }}</p>
-        <button class="add-to-cart-btn">Add to Cart</button>
+        <button @click="handleAddtoCart" class="add-to-cart-btn">Add to Cart</button>
       </div>
     </dev>
   </dev>
